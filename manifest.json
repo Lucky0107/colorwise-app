@@ -1,0 +1,64 @@
+{
+  "name": "ColorWise - 色覚支援ツール",
+  "short_name": "ColorWise",
+  "description": "色覚の多様性に配慮した、より見やすい色表示を実現する支援ツール",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait-primary",
+  "categories": ["utilities", "accessibility"],
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "色調整",
+      "short_name": "色調整",
+      "description": "RGB色調整プレビュー",
+      "url": "/?tab=rgb",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "写真処理",
+      "short_name": "写真処理", 
+      "description": "画像の色覚変換",
+      "url": "/?tab=image",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "カメラ",
+      "short_name": "カメラ",
+      "description": "リアルタイム処理",
+      "url": "/?tab=camera",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
