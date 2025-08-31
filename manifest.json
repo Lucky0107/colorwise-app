@@ -25,8 +25,8 @@
   ],
   "shortcuts": [
     {
-      "name": "色調整",
-      "short_name": "色調整",
+      "name": "色のプレビュー",
+      "short_name": "色のプレビュー",
       "description": "RGB色調整プレビュー",
       "url": "/?tab=rgb",
       "icons": [
@@ -37,8 +37,8 @@
       ]
     },
     {
-      "name": "写真処理",
-      "short_name": "写真処理", 
+      "name": "写真",
+      "short_name": "写真", 
       "description": "画像の色覚変換",
       "url": "/?tab=image",
       "icons": [
@@ -51,7 +51,7 @@
     {
       "name": "カメラ",
       "short_name": "カメラ",
-      "description": "リアルタイム処理",
+      "description": "写真撮影と色覚変換",
       "url": "/?tab=camera",
       "icons": [
         {
