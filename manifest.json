@@ -1,7 +1,7 @@
 {
-  "name": "ColorWise - 色覚支援ツール",
+  "name": "ColorWise - 色の世界を、もっと楽しく",
   "short_name": "ColorWise",
-  "description": "色覚の多様性に配慮した、より見やすい色表示を実現する支援ツール",
+  "description": "色の世界を、もっと楽しく。いろんな色の見え方を試してみよう。",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -10,6 +10,12 @@
   "categories": ["utilities", "accessibility"],
   "lang": "ja",
   "icons": [
+    {
+      "src": "/colorwise-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
