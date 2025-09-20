@@ -1,0 +1,70 @@
+{
+  "name": "ColorWise - 色の世界を、もっと楽しく",
+  "short_name": "ColorWise",
+  "description": "色の世界を、もっと楽しく。いろんな色の見え方を試してみよう。",
+  "start_url": "/colorwise-app/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait-primary",
+  "categories": ["utilities", "accessibility"],
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "/colorwise-app/colorwise-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/colorwise-app/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/colorwise-app/icon-512.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "色のプレビュー",
+      "short_name": "色のプレビュー",
+      "description": "RGB色調整プレビュー",
+      "url": "/colorwise-app/?tab=rgb",
+      "icons": [
+        {
+          "src": "/colorwise-app/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "写真",
+      "short_name": "写真", 
+      "description": "画像の色覚変換",
+      "url": "/colorwise-app/?tab=image",
+      "icons": [
+        {
+          "src": "/colorwise-app/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "カメラ",
+      "short_name": "カメラ",
+      "description": "写真撮影と色覚変換",
+      "url": "/colorwise-app/?tab=camera",
+      "icons": [
+        {
+          "src": "/colorwise-app/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
