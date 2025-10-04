@@ -1,9 +1,10 @@
-const CACHE_NAME = 'colorwise-v1.0.0';
+const CACHE_NAME = 'colorwise-v3.0.2';
 const urlsToCache = [
-  '/',
-  '/static/js/bundle.js',
-  '/static/css/main.css',
-  '/manifest.json'
+  // index.htmlはキャッシュしない（常に最新版を取得）
+  '/colorwise-app/manifest.json',
+  '/colorwise-app/colorwise-icon.svg',
+  '/colorwise-app/icon-192.png',
+  '/colorwise-app/icon-512.png'
 ];
 
 // インストール時のキャッシュ
@@ -15,24 +16,43 @@ self.addEventListener('install', (event) => {
         return cache.addAll(urlsToCache);
       })
   );
+  self.skipWaiting();
 });
 
 // フェッチ時のキャッシュ戦略（ネットワーク優先）
 self.addEventListener('fetch', (event) => {
+  const url = new URL(event.request.url);
+
+  // index.htmlは常にネットワークから取得（キャッシュしない）
+  if (url.pathname === '/colorwise-app/' || url.pathname.endsWith('.html')) {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        // オフライン時のみキャッシュから返す
+        return caches.match(event.request);
+      })
+    );
+    return;
+  }
+
+  // その他のリソースはネットワーク優先
   event.respondWith(
     fetch(event.request)
       .then((response) => {
         // レスポンスが有効でない場合はキャッシュから返す
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return caches.match(event.request);
+        if (!response || response.status !== 200) {
+          return caches.match(event.request).then(cachedResponse => {
+            return cachedResponse || response;
+          });
         }
 
-        // レスポンスをキャッシュに保存
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME)
-          .then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
+        // 静的リソース（画像、manifest等）のみキャッシュに保存
+        if (event.request.url.includes('/colorwise-app/')) {
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME)
+            .then((cache) => {
+              cache.put(event.request, responseToCache);
+            });
+        }
 
         return response;
       })
@@ -41,6 +61,13 @@ self.addEventListener('fetch', (event) => {
         return caches.match(event.request);
       })
   );
+// メッセージ受信（即時更新リクエスト）
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
 });
 
 // アクティベート時の古いキャッシュ削除
@@ -55,6 +82,6 @@ self.addEventListener('activate', (event) => {
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });
