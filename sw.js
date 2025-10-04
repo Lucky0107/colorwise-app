@@ -1,4 +1,5 @@
-const CACHE_NAME = 'colorwise-v3.0.2';
+// VERSION は Vite define で注入された値を利用
+const CACHE_NAME = 'colorwise-' + (self?.__APP_VERSION__ || 'dev');
 const urlsToCache = [
   // index.htmlはキャッシュしない（常に最新版を取得）
   '/colorwise-app/manifest.json',
